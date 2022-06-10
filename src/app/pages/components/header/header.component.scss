@@ -1,0 +1,12 @@
+.header {
+    padding: 3rem 2rem;
+    height: 268px;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    background: var(--gradient);
+    .title {
+        font-size: 30px;
+    }
+}

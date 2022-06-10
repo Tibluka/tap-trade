@@ -1,1 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --primary: #224e8f;
+    --primary-light: #3562a8;
+    --primary-dark: #295e97;
+    --secondary: #5edcd4;
+    --secondary-light: #edf8fd;
+    --secondary-dark: #57cacc;
+    --error: #bb1725;
+    --warning: #eededf;
+    --error-medium: #bb1725a6;
+    --error-light: #e4a5aa;
+    --info: #d2dfe1;
+    --gray: #d2d2d2;
+    --gray-light: #f3f6fa;
+    --gray-dark: #535455;
+    --gradient: linear-gradient(180deg, #081711 0%, #08EB8C 100%);
+    --gradient-horizontal: linear-gradient(90deg, #224e8f 0%, #57cacc 100%, #57cacc 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    @media (max-width: 1080px) {
+        font-size: 93.75%;
+    }
+    @media (max-width: 720px) {
+        font-size: 87.5%;
+    }
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+main,
+body,
+input,
+p,
+textarea {
+    font-family: "Roboto", sans-serif;
+    color: var(--primary-dark);
+    font-weight: 400;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+button {
+    font-weight: 700;
+    font-family: "Raleway", sans-serif;
+}
+
+[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
