@@ -14,6 +14,10 @@ export class AccountService {
     return this.accountMode;
   }
 
+  get balance() {
+    return this.accountBalance;
+  }
+
   constructor(private http: HttpClient) { }
 
   setAccountMode(mode: string) {
@@ -21,7 +25,7 @@ export class AccountService {
   }
 
   async setAccountBalance() {
-    const balance = await this.http.get(`${environment.url}`).toPromise()
+    const balance = await this.http.get(`${environment.url}/balance`).toPromise()
     this.accountBalance = balance;
   }
 

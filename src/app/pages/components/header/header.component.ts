@@ -13,11 +13,17 @@ export class HeaderComponent implements OnInit {
     return this.account.mode;
   }
 
+  get accountBalance(){
+    return this.account.balance;
+  }
+
   get engineStatus() {
     return this.engine.status;
   }
 
-  constructor(private account: AccountService, private engine: EngineService) { }
+  constructor(private account: AccountService, private engine: EngineService) {
+    this.account.setAccountBalance();
+  }
 
   ngOnInit(): void {
   }
