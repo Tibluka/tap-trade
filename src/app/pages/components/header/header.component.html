@@ -1,22 +1,20 @@
-<ng-container>
-    <div class="header d-block position-relative">
-        <div class="d-flex align-items-center justify-content-between">
-            <div class="title">Welcome to <b>TapTrade</b></div>
-            <div class="d-flex align-items-center">
-                <p class="mt-0 mr-2 mb-0"> {{accountMode === 'PRACTICE' ? 'Practice' : 'Real'}}</p>
-                <div class="switch position-relative" [ngClass]="{'active': accountMode === 'REAL'}"
-                    (click)="setAccountMode()">
-                    <div class="ball" [ngStyle]="{'left': accountMode === 'PRACTICE' ? '2px' : '22px'}"></div>
-                </div>
+<div class="header d-block position-relative">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="title">Welcome to <b>TapTrade</b></div>
+        <div class="d-flex align-items-center">
+            <p class="mt-0 mr-2 mb-0"> {{accountMode === 'PRACTICE' ? 'Practice' : 'Real'}}</p>
+            <div class="switch position-relative" [ngClass]="{'active': accountMode === 'REAL'}"
+                (click)="setAccountMode()">
+                <div class="ball" [ngStyle]="{'left': accountMode === 'PRACTICE' ? '2px' : '22px'}"></div>
             </div>
         </div>
-        <div>
-            <p>My balance</p>
-            <p class="balance">$ 6,000.52</p>
-        </div>
-        <div [ngStyle]="{'background-color': engineStatus ? '#E04A4B' : '#08eb8c'}" class="engine"
-            (click)="setEngineStatus()">
-            {{engineStatus ? 'STOP' : 'START'}}
-        </div>
     </div>
-</ng-container>
+    <div>
+        <p>My balance</p>
+        <p class="balance">$ 6,000.52</p>
+    </div>
+    <div [ngStyle]="{'background-color': engineStatus ? '#E04A4B' : '#08eb8c'}" class="engine"
+        (click)="setEngineStatus()">
+        {{engineStatus ? 'STOP' : 'START'}}
+    </div>
+</div>
