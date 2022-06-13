@@ -25,7 +25,7 @@ export class AccountService {
   }
 
   async setAccountBalance() {
-    const balance = await this.http.get(`${environment.url}/balance`).toPromise()
+    const balance = await this.http.post(`${environment.url}/balance`, {username: 'lugomes441@hotmail.com', password: 'Lukkao@2020'}).toPromise()
     this.accountBalance = balance;
   }
 

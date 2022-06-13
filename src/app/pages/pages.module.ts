@@ -13,7 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: 'home', component: PagesComponent, loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
+      { path: 'home', component: PagesComponent, loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+      { path: 'login', component: PagesComponent, loadChildren: () => import('./login/login.module').then(m => m.LoginModule) }
     ])
   ]
 })

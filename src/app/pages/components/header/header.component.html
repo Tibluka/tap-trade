@@ -11,7 +11,7 @@
     </div>
     <div>
         <p>My balance</p>
-        <p class="balance">$ 6,000.52</p>
+        <p class="balance">{{accountBalance.balance | currency: 'USD'}}</p>
     </div>
     <div [ngStyle]="{'background-color': engineStatus ? '#E04A4B' : '#08eb8c'}" class="engine"
         (click)="setEngineStatus()">
