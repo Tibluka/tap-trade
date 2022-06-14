@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +13,19 @@ export class EngineService {
     return this.engineStatus;
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  setEngineStatus(status: boolean) {
-    this.engineStatus = status;
+  async setEngineStatus(status: boolean) {
+    if (!status) {
+      await this.http.post(`${environment.url}/logout`,
+        { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise()
+      this.engineStatus = status;
+    } else {
+      const engine: any =
+        await this.http.post(`${environment.url}/start`,
+          { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise()
+      this.engineStatus = engine.status;
+    }
+
   }
 }

@@ -9,11 +9,13 @@ import { AccountService } from '../../../services/account.service';
 })
 export class HeaderComponent implements OnInit {
 
+  public interval: any;
+
   get accountMode() {
     return this.account.mode;
   }
 
-  get accountBalance(){
+  get accountBalance() {
     return this.account.balance;
   }
 
@@ -26,6 +28,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.interval = setInterval(() => {
+      const date = new Date().getSeconds();      
+      date === 0 ? this.account.setAccountBalance() : null;
+    }, 1000)
   }
 
   setAccountMode() {

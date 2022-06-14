@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class AccountService {
 
-  private accountMode: string = 'PRACTICE';
-  private accountBalance: any;
+  private accountMode: any = 'PRACTICE';
+  private accountBalance: any = 0;
 
   get mode() {
     return this.accountMode;
@@ -20,13 +20,19 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  setAccountMode(mode: string) {
-    this.accountMode = mode;
+  async setAccountMode(mode: string) {
+    const newMode: any =
+      await this.http.post(`${environment.url}/changeAccount`,
+        { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020', mode }).toPromise()
+    this.accountMode = newMode.mode;
+    this.setAccountBalance();
   }
 
   async setAccountBalance() {
-    const balance = await this.http.post(`${environment.url}/balance`, {username: 'lugomes441@hotmail.com', password: 'Lukkao@2020'}).toPromise()
-    this.accountBalance = balance;
+    const account: any =
+      await this.http.post(`${environment.url}/balance`,
+        { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise()
+    this.accountBalance = account.balance;
   }
 
 }
