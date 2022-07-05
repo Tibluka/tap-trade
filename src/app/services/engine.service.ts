@@ -17,7 +17,7 @@ export class EngineService {
 
   async setEngineStatus(status: boolean) {
     if (!status) {
-      await this.http.post(`${environment.url}/logout`,
+      await this.http.post(`${environment.url}/stop`,
         { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise()
       this.engineStatus = status;
     } else {
@@ -26,6 +26,12 @@ export class EngineService {
           { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise()
       this.engineStatus = engine.status;
     }
-
   }
+
+  async getEngineStatus() {
+    const engine: any = await this.http.post(`${environment.url}/get-status`,
+      { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise();
+    this.engineStatus = engine.status;
+  }
+
 }

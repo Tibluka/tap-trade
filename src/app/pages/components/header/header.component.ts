@@ -25,12 +25,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(private account: AccountService, private engine: EngineService) {
     this.account.setAccountBalance();
+    this.engine.getEngineStatus();
   }
 
   ngOnInit(): void {
     this.interval = setInterval(() => {
-      const date = new Date().getSeconds();      
-      date === 0 ? this.account.setAccountBalance() : null;
+      if (!this.engineStatus) { return }
+      const date = new Date().getSeconds();
+      date === 0 || date === 5 ? this.account.setAccountBalance() : null;
     }, 1000)
   }
 
