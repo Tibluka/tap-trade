@@ -1,6 +1,20 @@
-<div class="history">
+<div class="history-box">
     <div class="title d-flex justify-content-between align-items-center">
-        <p>History</p>
-        <p>See details</p>
+        <div class="history">History</div>
+        <div class="details">See details</div>
+    </div>
+    <div class="ordem" *ngFor="let order of tradingHistory.history">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="amount-win" [ngClass]="{'amount-win': order.win === 'win', 'amount-loss': order.win === 'loose'}">{{ order.win_amount - order.amount | currency: 'BRL'}}</div>
+            <div class="box-win" [ngClass]="{'box-win': order.win === 'win', 'box-loss': order.win === 'loose'}">
+                <img *ngIf="order.win === 'win'" src="../../../../assets/icons/arrow-win.svg" alt="">
+                <img *ngIf="order.win === 'loose'" src="../../../../assets/icons/arrow-loss.svg" alt="">
+            </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="tipo-ordem">Ordem de compra</div>
+            <div class="data">{{ date(order.created_millisecond) | date: 'dd/MM/yyyy HH:mm' }}</div>
+        </div>
+        <hr class="m-0">
     </div>
 </div>
