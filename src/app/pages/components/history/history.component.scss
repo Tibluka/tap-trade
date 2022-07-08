@@ -50,6 +50,14 @@
     padding-bottom: 8px;
 }
 
+.amount-zero {
+    font-family: "Mulish", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: #5D5C5D;
+    padding-bottom: 8px;
+}
+
 .box-win {
     color: white;
     padding: 4px;
@@ -73,6 +81,21 @@
     align-items: center;
     font-size: 12px;
 }
+
+.box-zero {
+    color: white;
+    padding: 4px;
+    width: 24px;
+    height: 22px;
+    background: #5D5C5D;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    justify-content: center;
+}
+
 
 hr {
     height: 0.5px;
