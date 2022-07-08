@@ -17,4 +17,6 @@
         (click)="setEngineStatus()">
         {{engineStatus ? 'STOP' : 'START'}}
     </div>
+    <div *ngIf="engineStatus" class="spinner is-animating"></div>
+
 </div>
