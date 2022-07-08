@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(private account: AccountService, private engine: EngineService) {
-    this.account.setAccountBalance();
+    this.account.getAccountBalance();
     this.engine.getEngineStatus();
   }
 
@@ -32,7 +32,10 @@ export class HeaderComponent implements OnInit {
     this.interval = setInterval(() => {
       if (!this.engineStatus) { return }
       const date = new Date().getSeconds();
-      date === 0 || date === 5 ? this.account.setAccountBalance() : null;
+      if (date === 0 || date === 5) {
+        this.account.getAccountBalance();
+        this.account.getHistory();
+      }
     }, 1000)
   }
 

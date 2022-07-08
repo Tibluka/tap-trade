@@ -11,7 +11,7 @@ export class AccountService {
 
   private accountMode: any = 'PRACTICE';
   private accountBalance: any = 0;
-  public history: TradingHistory = new TradingHistory();
+  public history: any = new TradingHistory();
 
   get mode() {
     return this.accountMode;
@@ -21,6 +21,10 @@ export class AccountService {
     return this.accountBalance;
   }
 
+  get tradingHistory() {
+    return this.history;
+  }
+
   constructor(private http: HttpClient) { }
 
   async setAccountMode(mode: string) {
@@ -28,18 +32,19 @@ export class AccountService {
       await this.http.post(`${environment.url}/changeAccount`,
         { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020', mode }).toPromise()
     this.accountMode = newMode.mode;
-    this.setAccountBalance();
+    this.getAccountBalance();
   }
 
-  async setAccountBalance() {
+  async getAccountBalance() {
     const account: any =
       await this.http.post(`${environment.url}/balance`,
         { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise()
     this.accountBalance = account.balance;
   }
 
-  getHistory() {
-    return this.http.get(`${environment.url}/get-history`)
+  async getHistory() {
+    const history = await this.http.get(`${environment.url}/get-history`).toPromise();
+    this.history = history;
   }
 
 }

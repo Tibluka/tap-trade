@@ -9,19 +9,15 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class HistoryComponent implements OnInit {
 
-  tradingHistory: TradingHistory = new TradingHistory();
-
-  constructor(private accountService: AccountService) { }
-
-  ngOnInit(): void {
-    this.history()
+  get tradingHistory() {
+    return this.accountService.tradingHistory;
   }
 
-  history() {
-    this.accountService.getHistory().subscribe((tradingHistory: any) => {
-      this.tradingHistory = tradingHistory
-    })
+  constructor(private accountService: AccountService) {
+    this.accountService.getHistory();
   }
+
+  ngOnInit(): void { }
 
   date(created_millisecond: number) {
     return new Date(created_millisecond)

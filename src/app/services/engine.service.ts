@@ -32,6 +32,8 @@ export class EngineService {
     const engine: any = await this.http.post(`${environment.url}/get-status`,
       { username: 'lugomes441@hotmail.com', password: 'Lukkao@2020' }).toPromise();
     this.engineStatus = engine.status;
+    console.log(engine);
+    
   }
 
 }
